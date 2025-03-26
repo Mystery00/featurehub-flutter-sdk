@@ -73,7 +73,8 @@ class _FeatureStateBaseHolder implements FeatureStateHolder {
 
   bool get isSet => _value != null;
 
-  bool get isEnabled => _featureState?.type == FeatureValueType.BOOLEAN && _value == true;
+  bool get isEnabled =>
+      _featureState?.type == FeatureValueType.BOOLEAN && _value == true;
 
   set featureState(FeatureState fs) {
     _featureState = fs;
@@ -219,6 +220,10 @@ class ClientFeatureRepository {
         case SSEResultState.deleteFeature:
           _deleteFeature(FeatureState.fromJson(data));
           break;
+        case SSEResultState.config:
+          throw UnimplementedError();
+        case SSEResultState.error:
+          throw UnimplementedError();
       }
     }
   }
